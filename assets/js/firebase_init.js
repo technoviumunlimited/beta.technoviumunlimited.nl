@@ -19,13 +19,14 @@ $(document).ready(function(){
 		$('#login').hide();
 	})
 
-    $('#loginModalButton').on( "click", function() {
+    $('.loginModalButton').on( "click", function() {
 		console.log("loginModal");
 		$('#loginModal').modal('show');
 		  $(function () {
 			$('[data-toggle="tooltip"]').tooltip()
 		  })
 	});
+	
 
 	$('#signup-s').click(function(){
 		var email=$('#email-s').val()
@@ -59,7 +60,7 @@ $(document).ready(function(){
 			$('#button_play_game').show();
 			$('#header_login').hide();
 			$('#header_logged_in').show();
-			
+			$('#loginModal').modal('hide');
 		} else {
 			console.log('not logged in');
 			$('#button_signup').show()
@@ -86,9 +87,9 @@ $(document).ready(function(){
 
 	$('#logout').click(function(){
 		firebase.auth().signOut().then(function() {
-			$('#login').show();
-			$('#sign').hide();
-			$('#logged-in').hide();
+			//$('#login').show();
+			//$('#sign').hide();
+			//$('#logged-in').hide();
 		}).catch(function(error) {
 			// An error happened.
 		});
