@@ -60,39 +60,21 @@
                                     </div>
                                     <div class="navbar-wrap main-menu d-none d-lg-flex">
                                         <ul class="navigation">
-                                            <li class="active menu-item-has-children"><a href="#">Home</a>
-                                                <ul class="sub-menu">
-                                                    <li class="active"><a href="index.html">Home One</a></li>
-                                                    <li><a href="index-2.html">Home Two</a></li>
-                                                    <li><a href="index-3.html">Home three</a></li>
-                                                </ul>
-                                            </li>
+                                            
                                             <li><a href="about-us.html">About Us</a></li>
                                             <li><a href="tournaments.html">Tournament</a></li>
-                                            <li class="menu-item-has-children"><a href="#">Blog</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="blog.html">Our Blog</a></li>
-                                                    <li><a href="blog-details.html">Blog Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item-has-children"><a href="#">Pages</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="our-squad.html">Our Squad</a></li>
-                                                    <li><a href="match-single.html">Match Single</a></li>
-                                                    <li><a href="shop.html">Our Shop</a></li>
-                                                    <li><a href="shop-details.html">Shop Details</a></li>
-                                                </ul>
-                                            </li>
+                                            
+                                            
                                             <li><a href="contact.html">contact</a></li>
                                         </ul>
                                     </div>
                                     <div class="header-action">
                                         <ul>
-                                            <li class="header-search">
-                                                <a href="#"><i class="fas fa-search"></i></a>
+                                            <li class="header-sine" id="header_login">
+                                                <a href="#"><i class="far fa-edit"></i>log-in</a>
                                             </li>
-                                            <li class="header-sine">
-                                                <a href="contact.html"><i class="far fa-edit"></i>log-in</a>
+											<li class="header-sine" id="header_logged_in">
+                                                <a href="#" id="log_out"><i class="far fa-edit"></i>log out</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -206,18 +188,20 @@
                     <div class="row justify-content-center">
                         <div class="col-xxl-8 col-lg-9">
                             <div class="banner-content text-center">
-                                <h4 class="small-title">the Season 8</h4>
-                                <h2 class="title layer" data-depth="-0.2">steam</h2>
-                                <div class="banner-btn">
+                                <h4 class="small-title">Technovium</h4>
+                                <h2 class="title layer" data-depth="-0.2">Unlimited</h2>
+								<div class="banner-btn" id="button_preloader">
+                                    
+                                </div>
+                                <div class="banner-btn" id="button_play_game" style="display: none;">
                                     <a  class="btn" href="download.html" id="play_game">Play game
 										<i class="fas fa-play-circle"></i>
 									</a>
-                                    <div class="container">
-
-										<a type="button" href="#" id="loginModalButton" class="btn btn-info btn-round" data-toggle="modal" data-target="#loginModal">
-										  Login
-										</a>  
-									  </div>
+                                </div>
+								<div class="banner-btn" id="button_signup" style="display: none;">
+									<a type="button" href="#" id="loginModalButton" class="btn btn-info btn-round" data-toggle="modal" data-target="#loginModal">
+										Login
+									</a> 
                                 </div>
                             </div>
                         </div>

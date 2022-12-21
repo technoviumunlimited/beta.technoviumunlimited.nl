@@ -6,11 +6,8 @@ var firebaseConfig = {
 	messagingSenderId: "887618065616",
 	appId: "1:887618065616:web:8546ca383b8c7fb9857ad5"
 };
-
 firebase.initializeApp(firebaseConfig);
-
 const auth=firebase.auth();
-
 	
 $(document).ready(function(){
 	$("#loginref").click(function(){
@@ -28,68 +25,72 @@ $(document).ready(function(){
 		  $(function () {
 			$('[data-toggle="tooltip"]').tooltip()
 		  })
-	  }); 
-		
+	});
 
+	$('#signup-s').click(function(){
+		var email=$('#email-s').val()
+		var password=$('#password-s').val()
+		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+			// Handle Errors here.
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			alert(errorMessage);
+	// ...
+		});
+    });
+    
+	$('#login-l').click(function(){
+		var email=$('#email-l').val()
+		var password=$('#password-l').val()
+		firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+			// Handle Errors here.
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			// ...
+			alert(errorMessage);
+		});
+    });
 
+	firebase.auth().onAuthStateChanged(function(user){
+		console.log(user);
+		if(user){
+			getIdTokenRefreshed();
+			$('#button_signup').hide()
+			$('#button_play_game').show();
+			$('#header_login').hide();
+			$('#header_logged_in').show();
+			
+		} else {
+			console.log('not logged in');
+			$('#button_signup').show()
+			$('#button_play_game').hide();
+			$('#header_login').show();
+			$('#header_logged_in').hide();
+		}
+	})
 
-    $('#signup-s').click(function(){
-      var email=$('#email-s').val()
-      var password=$('#password-s').val()
-      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  alert(errorMessage);
-  // ...
-});
-    })
-    $('#login-l').click(function(){
-      var email=$('#email-l').val()
-      var password=$('#password-l').val()
-      firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // ...
-  alert(errorMessage);
-});
-    })
-
-firebase.auth().onAuthStateChanged(function(user){
-	console.log(user);
-	if(user){
-		getIdTokenRefreshed();
-		$('#sign').hide()
-		$('#login').hide()
-		$('#logged-in').show();
-	} else {
-		console.log('not logged in');
+	const getIdTokenRefreshed = async () => {
+		try {
+		const user = firebase.auth().currentUser
+		if (user) {
+			const token = await user.getIdToken(true)
+			console.log(`Token: ${token}`)
+			return token
+		} else {
+			console.log("No user is logged in")
+		}
+		} catch (e) {
+		console.log(`Something went wrong: ${e}`)
+		}
 	}
-})
 
-const getIdTokenRefreshed = async () => {
-	try {
-	  const user = firebase.auth().currentUser
-	  if (user) {
-		const token = await user.getIdToken(true)
-		console.log(`Token: ${token}`)
-		return token
-	  } else {
-		console.log("No user is logged in")
-	  }
-	} catch (e) {
-	  console.log(`Something went wrong: ${e}`)
-	}
-  }
-
-$('#logout').click(function(){	
-firebase.auth().signOut().then(function() {
-    $('#login').show();
-    $('#sign').hide();
-    $('#logged-in').hide();
-}).catch(function(error) {
-  // An error happened.
-});
-})
+	$('#logout').click(function(){
+		firebase.auth().signOut().then(function() {
+			$('#login').show();
+			$('#sign').hide();
+			$('#logged-in').hide();
+		}).catch(function(error) {
+			// An error happened.
+		});
+	})
   })
