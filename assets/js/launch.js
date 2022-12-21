@@ -40,6 +40,15 @@ const getIdTokenRefreshed = async () => {
 	}
   }
 
+$(document).ready(function(){
+	function showDownloadButton(){
+		$("#download_button").show();
+		$("#download_button_loading").hide();
+	}
+	setTimeout(showDownloadButton, 2000);
+
+});
+
 
 	
 	///setTimeout("window.location = 'http://hastrk.com/serve?action=click&publisher_id=1&site_id=2';", 1000);
