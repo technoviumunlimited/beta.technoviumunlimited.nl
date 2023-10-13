@@ -1,0 +1,1 @@
+import{h as a,j as t,p as r}from"./entry.0dcd307e.js";const s={__name:"account",setup(o){return a(async()=>{try{}catch(e){console.error(e),state.errors.push(e)}}),(e,n)=>(r(),t("div",null,"hi, hier komt nog volledige pagina"))}};export{s as default};
